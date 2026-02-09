@@ -10,3 +10,6 @@ spell/
 lazy-lock.json
 
 .DS_Store
+
+# PC-specific local configuration
+local.lua

@@ -11,6 +11,10 @@ I hope you enjoy your Neovim journey,
 
 require 'keymaps'
 
+-- Load PC-specific local configuration if it exists
+-- This file is gitignored and contains machine-specific settings
+pcall(require, 'local')
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -370,12 +374,14 @@ require('lazy').setup({
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
+    enabled = not vim.g.local_disable_lsp,
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- Mason must be loaded before its dependents so we need to set it up here.
       -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
       {
         'mason-org/mason.nvim',
+        enabled = not vim.g.local_disable_mason,
         opts = {},
         dependencies = { { 'mason-org/mason-lspconfig.nvim', opts = {} } },
       },
