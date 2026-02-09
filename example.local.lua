@@ -2,6 +2,7 @@
 -- This file is gitignored for machine-specific customizations
 --
 -- Copy this file to your local machine and customize as needed
+-- It must be placed in the lua folder
 -- It will be loaded automatically by init.lua
 
 -- =============================================================================
