@@ -133,6 +133,15 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
+-- Autosave
+vim.api.nvim_create_autocmd({ 'InsertLeave', 'BufLeave', 'FocusLost' }, {
+  desc = 'Auto-save modified buffers',
+  group = vim.api.nvim_create_augroup('kickstart-auto-save', { clear = true }),
+  callback = function()
+    if vim.bo.modified and vim.bo.modifiable and vim.fn.expand '%' ~= '' and vim.bo.buftype == '' then vim.cmd 'silent! write' end
+  end,
+})
+
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.hl.on_yank()`
@@ -491,7 +500,7 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
+        ts_ls = {},
       }
 
       -- Ensure the servers and tools above are installed
