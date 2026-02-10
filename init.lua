@@ -51,6 +51,7 @@ vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 vim.o.breakindent = true
 
 vim.o.wrap = false
+vim.o.colorcolumn = "80"
 
 -- Save undo history
 vim.o.undofile = true
