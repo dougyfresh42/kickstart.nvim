@@ -51,7 +51,7 @@ vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 vim.o.breakindent = true
 
 vim.o.wrap = false
-vim.o.colorcolumn = "80"
+vim.o.colorcolumn = '80'
 
 -- Save undo history
 vim.o.undofile = true
@@ -801,7 +801,9 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  { import = 'custom.plugins.opencode' },
+  require 'custom.plugins.opencode',
+  require 'custom.plugins.render-markdown',
+  -- { import = 'custom.plugins.opencode' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
